@@ -1,0 +1,9 @@
+<Solution>
+  <Project Path="BLL/BLL.csproj" Id="806a5355-3ebe-4697-963b-2642ecbbe83a">
+    <BuildDependency Project="DAL/DAL.csproj" />
+  </Project>
+  <Project Path="DAL/DAL.csproj" Id="1d012bb8-4e8f-407b-91b8-2a08fc5a28c9" />
+  <Project Path="UI/UI.csproj">
+    <BuildDependency Project="BLL/BLL.csproj" />
+  </Project>
+</Solution>
