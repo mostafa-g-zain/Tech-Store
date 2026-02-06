@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DAL.Data
+namespace DAL.Entities
 {
-    public class DbSeeder
+    public class Brand
     {
-
     }
 }
