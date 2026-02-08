@@ -4,7 +4,15 @@ using System.Text;
 
 namespace DAL.Entities
 {
-    internal class Specification
+    public class Specification
     {
+        public int Id { get; set; }
+        public string SpecKey { get; set; }
+        public string SpecValue { get; set; }
+        public int SortOrder { get; set; }
+
+        //FK
+        public int ProductId { get; set; }
+        public required Product Product { get; set; }
     }
 }

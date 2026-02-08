@@ -4,7 +4,17 @@ using System.Text;
 
 namespace DAL.Entities
 {
-    internal class ProductImage
+    public class ProductImage
     {
+        public int Id { get; set; }
+        public required string ImageUrl { get; set; }
+
+        public int SortOrder { get; set; }
+
+        // FK
+        public int ProductId { get; set; }
+
+        //Nav prop
+        public required Product Product { get; set; }
     }
 }
