@@ -42,9 +42,9 @@ namespace DAL.Entities
         public int BrandId { get; set; }
 
         // Nav prop
-        public required Category ParentCategory { get; set; }
+        public Category? ParentCategory { get; set; }
 
-        public required Brand ParentBrand { get; set; }
+        public Brand? ParentBrand { get; set; }
 
         public ICollection<ProductImage> ProductImages { get; set; } = new HashSet<ProductImage>();
         public ICollection<Specification> Specifications { get; set; } = new HashSet<Specification>();
