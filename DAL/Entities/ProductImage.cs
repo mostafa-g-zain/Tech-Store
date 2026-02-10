@@ -7,9 +7,9 @@ namespace DAL.Entities
     public class ProductImage
     {
         public int Id { get; set; }
-        public required string ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
 
-        public int SortOrder { get; set; }
+        public int? SortOrder { get; set; }
 
         // FK
         public int ProductId { get; set; }

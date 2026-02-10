@@ -17,6 +17,7 @@ namespace DAL.Data
         {
             base.OnModelCreating(builder);
 
+            // config & seeds
             builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
         }
     }

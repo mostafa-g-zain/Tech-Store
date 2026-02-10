@@ -13,6 +13,6 @@ namespace DAL.Entities
 
         //FK
         public int ProductId { get; set; }
-        public required Product Product { get; set; }
+        public Product Product { get; set; }
     }
 }

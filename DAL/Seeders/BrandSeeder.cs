@@ -1,7 +1,7 @@
+using System;
 using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
 
 namespace DAL.Seeders
 {

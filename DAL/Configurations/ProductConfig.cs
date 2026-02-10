@@ -1,4 +1,5 @@
 using DAL.Entities;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -11,7 +12,8 @@ namespace DAL.Configurations
             builder.HasKey(p => p.Id);
 
             builder.Property(p => p.Name)
-                .IsRequired();
+                .IsRequired()
+                .HasMaxLength(128);
 
             builder.Property(p => p.Price)
                 .HasPrecision(18, 2);
@@ -28,6 +30,8 @@ namespace DAL.Configurations
                 .WithMany(b => b.Products)
                 .HasForeignKey(p => p.BrandId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+
         }
     }
 }

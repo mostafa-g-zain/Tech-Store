@@ -187,7 +187,7 @@ publish/
 *.pubxml
 *.publishproj
 
-# Microsoft Azure Web App publish settings. Comment the next line if you want to
+# Microsoft Azure Web App publish settings. Comment the next line to ignore
 # checkin your Azure Web App publish settings, but sensitive information contained
 # in these scripts will be unencrypted
 PublishScripts/
@@ -241,11 +241,11 @@ ClientBin/
 orleans.codegen.cs
 
 # Including strong name files can present a security risk
-# (https://github.com/github/gitignore/pull/2483#issue-259490424)
+# (https://github.com/github/gitignore/blob/master/VisualStudio.gitignore)
 #*.snk
 
 # Since there are multiple workflows, uncomment next line to ignore bower_components
-# (https://github.com/github/gitignore/pull/1529#issuecomment-104372622)
+# (https://github.com/github/gitignore/blob/master/VisualStudio.gitignore)
 #bower_components/
 
 # RIA/Silverlight projects
@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Ignore repository contribution guidelines
+CONTRIBUTING.md
+
+# Local app settings (keep secrets out of git)
+appsettings*.json
