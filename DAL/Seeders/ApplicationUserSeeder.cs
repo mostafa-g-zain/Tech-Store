@@ -11,10 +11,6 @@ public class ApplicationUserSeeder : IEntityTypeConfiguration<ApplicationUser>
     {
         var seedDate = new DateTimeOffset(2026, 1, 1, 0, 0, 0, TimeSpan.Zero);
 
-        // NOTE:
-        // Replace the two PasswordHash values below with the hashes you generated ONCE.
-        // They must be constant strings (no PasswordHasher(), no Guid.NewGuid(), no DateTime.UtcNow).
-
         builder.HasData(
             new ApplicationUser
             {
