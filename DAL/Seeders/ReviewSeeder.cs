@@ -13,10 +13,6 @@ namespace DAL.Seeders
         {
             var now = DateTimeOffset.UtcNow;
 
-            // NOTE:
-            // - `UserId` must match a real Identity user id in your database.
-            // - If you don't seed users via HasData, this seeder will fail on FK constraints.
-            // Consider seeding reviews only after you have a deterministic user seeding approach.
             builder.HasData(
                 new
                 {
@@ -27,7 +23,7 @@ namespace DAL.Seeders
                     IsApproved = true,
                     CreatedAt = now,
                     ProductId = 1,
-                    UserId = "REPLACE_WITH_REAL_USER_ID"
+                    UserId = 2 // Customer user
                 },
                 new
                 {
@@ -38,7 +34,7 @@ namespace DAL.Seeders
                     IsApproved = true,
                     CreatedAt = now,
                     ProductId = 7,
-                    UserId = "REPLACE_WITH_REAL_USER_ID"
+                    UserId = 2 // Customer user
                 }
             );
         }
