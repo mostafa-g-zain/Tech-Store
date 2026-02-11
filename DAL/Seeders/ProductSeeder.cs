@@ -1,7 +1,9 @@
+using System;
+
 using DAL.Entities;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
 
 namespace DAL.Seeders
 {
@@ -9,7 +11,7 @@ namespace DAL.Seeders
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
-            var now = DateTimeOffset.UtcNow;
+            var seedDate = new DateTimeOffset(2026, 1, 1, 0, 0, 0, TimeSpan.Zero);
 
             builder.HasData(
                 // Gaming Laptops
@@ -29,8 +31,8 @@ namespace DAL.Seeders
                     IsBestSeller = true,
                     CategoryId = 6, // Gaming Laptops
                     BrandId = 6, // ASUS
-                    CreatedAt = now,
-                    UpdatedAt = now,
+                    CreatedAt = seedDate,
+                    UpdatedAt = seedDate,
                     MetaTitle = "ASUS ROG Strix G15 Gaming Laptop",
                     MetaDescription = "Buy ASUS ROG Strix G15 gaming laptop with RTX 4060 graphics card"
                 },
@@ -50,8 +52,8 @@ namespace DAL.Seeders
                     IsBestSeller = true,
                     CategoryId = 6, // Gaming Laptops
                     BrandId = 7, // Acer
-                    CreatedAt = now,
-                    UpdatedAt = now,
+                    CreatedAt = seedDate,
+                    UpdatedAt = seedDate,
                     MetaTitle = "Acer Predator Helios 300 Gaming Laptop",
                     MetaDescription = "Affordable gaming laptop with great performance"
                 },
@@ -73,8 +75,8 @@ namespace DAL.Seeders
                     IsBestSeller = false,
                     CategoryId = 7, // Business Laptops
                     BrandId = 3, // Dell
-                    CreatedAt = now,
-                    UpdatedAt = now,
+                    CreatedAt = seedDate,
+                    UpdatedAt = seedDate,
                     MetaTitle = "Dell Latitude 5420 Business Laptop",
                     MetaDescription = "Professional Dell Latitude laptop for business users"
                 },
@@ -94,8 +96,8 @@ namespace DAL.Seeders
                     IsBestSeller = false,
                     CategoryId = 7, // Business Laptops
                     BrandId = 4, // HP
-                    CreatedAt = now,
-                    UpdatedAt = now,
+                    CreatedAt = seedDate,
+                    UpdatedAt = seedDate,
                     MetaTitle = "HP EliteBook 840 G8 Business Laptop",
                     MetaDescription = "Premium HP EliteBook for professionals"
                 },
@@ -117,8 +119,8 @@ namespace DAL.Seeders
                     IsBestSeller = true,
                     CategoryId = 8, // Ultrabooks
                     BrandId = 1, // Apple
-                    CreatedAt = now,
-                    UpdatedAt = now,
+                    CreatedAt = seedDate,
+                    UpdatedAt = seedDate,
                     MetaTitle = "MacBook Air M3 - Ultra-thin Laptop",
                     MetaDescription = "Latest MacBook Air with M3 chip"
                 },
@@ -138,8 +140,8 @@ namespace DAL.Seeders
                     IsBestSeller = false,
                     CategoryId = 8, // Ultrabooks
                     BrandId = 3, // Dell
-                    CreatedAt = now,
-                    UpdatedAt = now,
+                    CreatedAt = seedDate,
+                    UpdatedAt = seedDate,
                     MetaTitle = "Dell XPS 13 Ultrabook",
                     MetaDescription = "Premium Dell XPS 13 with stunning display"
                 },
@@ -161,8 +163,8 @@ namespace DAL.Seeders
                     IsBestSeller = true,
                     CategoryId = 10, // iPhones
                     BrandId = 1, // Apple
-                    CreatedAt = now,
-                    UpdatedAt = now,
+                    CreatedAt = seedDate,
+                    UpdatedAt = seedDate,
                     MetaTitle = "iPhone 15 Pro - Latest Apple Smartphone",
                     MetaDescription = "Buy iPhone 15 Pro with A17 Pro chip"
                 },
@@ -182,8 +184,8 @@ namespace DAL.Seeders
                     IsBestSeller = true,
                     CategoryId = 10, // iPhones
                     BrandId = 1, // Apple
-                    CreatedAt = now,
-                    UpdatedAt = now,
+                    CreatedAt = seedDate,
+                    UpdatedAt = seedDate,
                     MetaTitle = "iPhone 15 - Latest Apple Smartphone",
                     MetaDescription = "Buy iPhone 15 with Dynamic Island"
                 },
@@ -205,8 +207,8 @@ namespace DAL.Seeders
                     IsBestSeller = true,
                     CategoryId = 9, // Android Phones
                     BrandId = 2, // Samsung
-                    CreatedAt = now,
-                    UpdatedAt = now,
+                    CreatedAt = seedDate,
+                    UpdatedAt = seedDate,
                     MetaTitle = "Samsung Galaxy S24 Ultra Smartphone",
                     MetaDescription = "Premium Samsung Galaxy S24 Ultra with S Pen"
                 },
@@ -226,8 +228,8 @@ namespace DAL.Seeders
                     IsBestSeller = false,
                     CategoryId = 9, // Android Phones
                     BrandId = 10, // Xiaomi
-                    CreatedAt = now,
-                    UpdatedAt = now,
+                    CreatedAt = seedDate,
+                    UpdatedAt = seedDate,
                     MetaTitle = "Xiaomi 14 Pro Smartphone",
                     MetaDescription = "Xiaomi 14 Pro with Leica camera system"
                 },
@@ -249,8 +251,8 @@ namespace DAL.Seeders
                     IsBestSeller = false,
                     CategoryId = 4, // Tablets
                     BrandId = 1, // Apple
-                    CreatedAt = now,
-                    UpdatedAt = now,
+                    CreatedAt = seedDate,
+                    UpdatedAt = seedDate,
                     MetaTitle = "iPad Pro 12.9 inch - Professional Tablet",
                     MetaDescription = "iPad Pro 12.9 with M2 chip for professionals"
                 },
@@ -270,8 +272,8 @@ namespace DAL.Seeders
                     IsBestSeller = true,
                     CategoryId = 4, // Tablets
                     BrandId = 2, // Samsung
-                    CreatedAt = now,
-                    UpdatedAt = now,
+                    CreatedAt = seedDate,
+                    UpdatedAt = seedDate,
                     MetaTitle = "Samsung Galaxy Tab S9 Tablet",
                     MetaDescription = "Premium Samsung tablet with S Pen"
                 },
@@ -293,8 +295,8 @@ namespace DAL.Seeders
                     IsBestSeller = true,
                     CategoryId = 11, // Headphones
                     BrandId = 9, // Sony
-                    CreatedAt = now,
-                    UpdatedAt = now,
+                    CreatedAt = seedDate,
+                    UpdatedAt = seedDate,
                     MetaTitle = "Sony WH-1000XM5 Wireless Headphones",
                     MetaDescription = "Premium Sony headphones with noise cancellation"
                 },
@@ -314,8 +316,8 @@ namespace DAL.Seeders
                     IsBestSeller = true,
                     CategoryId = 11, // Headphones
                     BrandId = 1, // Apple
-                    CreatedAt = now,
-                    UpdatedAt = now,
+                    CreatedAt = seedDate,
+                    UpdatedAt = seedDate,
                     MetaTitle = "AirPods Pro 2nd Generation",
                     MetaDescription = "Apple AirPods Pro with active noise cancellation"
                 },
@@ -337,8 +339,8 @@ namespace DAL.Seeders
                     IsBestSeller = true,
                     CategoryId = 12, // Keyboards & Mice
                     BrandId = 6, // ASUS
-                    CreatedAt = now,
-                    UpdatedAt = now,
+                    CreatedAt = seedDate,
+                    UpdatedAt = seedDate,
                     MetaTitle = "ASUS ROG Strix Scope II Gaming Keyboard",
                     MetaDescription = "Mechanical gaming keyboard with RGB lighting"
                 }

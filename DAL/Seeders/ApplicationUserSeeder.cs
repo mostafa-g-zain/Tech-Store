@@ -1,9 +1,7 @@
 ﻿using DAL.Entities;
 
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
 
 namespace DAL.Seeders;
 
@@ -11,45 +9,43 @@ public class ApplicationUserSeeder : IEntityTypeConfiguration<ApplicationUser>
 {
     public void Configure(EntityTypeBuilder<ApplicationUser> builder)
     {
-        var now = DateTimeOffset.UtcNow;
+        var seedDate = new DateTimeOffset(2026, 1, 1, 0, 0, 0, TimeSpan.Zero);
 
-        // Create password hasher
-        var hasher = new PasswordHasher<ApplicationUser>();
+        // NOTE:
+        // Replace the two PasswordHash values below with the hashes you generated ONCE.
+        // They must be constant strings (no PasswordHasher(), no Guid.NewGuid(), no DateTime.UtcNow).
 
-        // Admin User
-        var adminUser = new ApplicationUser
-        {
-            Id = 1,
-            UserName = "admin@techstore.com",
-            NormalizedUserName = "ADMIN@TECHSTORE.COM",
-            Email = "admin@techstore.com",
-            NormalizedEmail = "ADMIN@TECHSTORE.COM",
-            EmailConfirmed = true,
-            FullName = "System Administrator",
-            SecurityStamp = Guid.NewGuid().ToString(),
-            ConcurrencyStamp = Guid.NewGuid().ToString(),
-            CreatedAt = now,
-            UpdatedAt = now
-        };
-        adminUser.PasswordHash = hasher.HashPassword(adminUser, "Admin@123");
-
-        // Customer User
-        var customerUser = new ApplicationUser
-        {
-            Id = 2,
-            UserName = "customer@example.com",
-            NormalizedUserName = "CUSTOMER@EXAMPLE.COM",
-            Email = "customer@example.com",
-            NormalizedEmail = "CUSTOMER@EXAMPLE.COM",
-            EmailConfirmed = true,
-            FullName = "Mostafa Zain",
-            SecurityStamp = Guid.NewGuid().ToString(),
-            ConcurrencyStamp = Guid.NewGuid().ToString(),
-            CreatedAt = now,
-            UpdatedAt = now
-        };
-        customerUser.PasswordHash = hasher.HashPassword(customerUser, "Customer@123");
-
-        builder.HasData(adminUser, customerUser);
+        builder.HasData(
+            new ApplicationUser
+            {
+                Id = 1,
+                UserName = "admin@techstore.com",
+                NormalizedUserName = "ADMIN@TECHSTORE.COM",
+                Email = "admin@techstore.com",
+                NormalizedEmail = "ADMIN@TECHSTORE.COM",
+                EmailConfirmed = true,
+                FullName = "System Administrator",
+                SecurityStamp = "ADMIN-SECURITY-STAMP-STATIC-001",
+                ConcurrencyStamp = "ADMIN-CONCURRENCY-STAMP-STATIC-001",
+                PasswordHash = "REPLACE_WITH_STATIC_HASH_FOR_Admin@123",
+                CreatedAt = seedDate,
+                UpdatedAt = seedDate
+            },
+            new ApplicationUser
+            {
+                Id = 2,
+                UserName = "customer@example.com",
+                NormalizedUserName = "CUSTOMER@EXAMPLE.COM",
+                Email = "customer@example.com",
+                NormalizedEmail = "CUSTOMER@EXAMPLE.COM",
+                EmailConfirmed = true,
+                FullName = "Mostafa Zain",
+                SecurityStamp = "CUSTOMER-SECURITY-STAMP-STATIC-002",
+                ConcurrencyStamp = "CUSTOMER-CONCURRENCY-STAMP-STATIC-002",
+                PasswordHash = "REPLACE_WITH_STATIC_HASH_FOR_Customer@123",
+                CreatedAt = seedDate,
+                UpdatedAt = seedDate
+            }
+        );
     }
 }

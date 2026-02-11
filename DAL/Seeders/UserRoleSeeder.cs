@@ -4,22 +4,24 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DAL.Seeders;
 
-public class UserRoleSeeder : IEntityTypeConfiguration<IdentityUserRole<int>>
+public class RoleSeeder : IEntityTypeConfiguration<IdentityRole<int>>
 {
-    public void Configure(EntityTypeBuilder<IdentityUserRole<int>> builder)
+    public void Configure(EntityTypeBuilder<IdentityRole<int>> builder)
     {
         builder.HasData(
-            // Admin User (Id: 1) -> Admin Role (Id: 1)
-            new IdentityUserRole<int>
+            new IdentityRole<int>
             {
-                UserId = 1,
-                RoleId = 1
+                Id = 1,
+                Name = "Admin",
+                NormalizedName = "ADMIN",
+                ConcurrencyStamp = "ROLE-ADMIN-CONCURRENCY-STAMP-001"
             },
-            // Customer User (Id: 2) -> Customer Role (Id: 2)
-            new IdentityUserRole<int>
+            new IdentityRole<int>
             {
-                UserId = 2,
-                RoleId = 2
+                Id = 2,
+                Name = "Customer",
+                NormalizedName = "CUSTOMER",
+                ConcurrencyStamp = "ROLE-CUSTOMER-CONCURRENCY-STAMP-002"
             }
         );
     }

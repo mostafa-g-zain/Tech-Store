@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using DAL.Entities;
+﻿using DAL.Entities;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -24,6 +22,8 @@ namespace DAL.Configurations
             builder.Property(s => s.SortOrder)
                 .IsRequired(false)
                 .HasColumnName("SortOrder");
+
+            builder.HasIndex(s => s.ProductId);
 
             builder.HasOne(s => s.Product)
                 .WithMany(s => s.Specifications)

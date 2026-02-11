@@ -11,7 +11,7 @@ namespace DAL.Seeders
     {
         public void Configure(EntityTypeBuilder<Review> builder)
         {
-            var now = DateTimeOffset.UtcNow;
+            var seedDate = new DateTimeOffset(2026, 1, 1, 0, 0, 0, TimeSpan.Zero);
 
             builder.HasData(
                 new
@@ -21,7 +21,7 @@ namespace DAL.Seeders
                     Title = "Excellent performance",
                     Comment = "Runs everything smoothly. Great build quality.",
                     IsApproved = true,
-                    CreatedAt = now,
+                    CreatedAt = seedDate,
                     ProductId = 1,
                     UserId = 2 // Customer user
                 },
@@ -32,7 +32,7 @@ namespace DAL.Seeders
                     Title = "Great phone",
                     Comment = "Camera is fantastic, battery life is solid.",
                     IsApproved = true,
-                    CreatedAt = now,
+                    CreatedAt = seedDate,
                     ProductId = 7,
                     UserId = 2 // Customer user
                 }
