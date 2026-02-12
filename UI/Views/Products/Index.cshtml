@@ -62,20 +62,9 @@
                     @foreach (var product in Model)
                     {
                         <div class="col">
-                            <div class="card h-100">
-                                @if (!string.IsNullOrEmpty(product.MainImage))
-                                {
-                                    <img src="@product.MainImage" class="card-img-top" alt="@product.Name" style="height: 200px; object-fit: cover;">
-                                }
-                                else
-                                {
-                                    <div class="bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
-                                        <span class="text-muted">No Image</span>
-                                    </div>
-                                }
-
-                                <!-- Badges -->
-                                <div class="position-absolute top-0 start-0 m-2">
+                            <div class="card h-100 position-relative">
+                                <!-- Badges - Horizontal -->
+                                <div class="position-absolute top-0 start-0 m-2 d-flex gap-1" style="z-index: 10;">
                                     @if (product.IsHot)
                                     {
                                         <span class="badge bg-danger">Hot</span>
@@ -89,6 +78,8 @@
                                         <span class="badge bg-warning text-dark">-@product.DiscountPercentage%</span>
                                     }
                                 </div>
+
+                                <img src="@product.MainImage" class="card-img-top" alt="@product.Name" style="height: 200px; object-fit: cover;">
 
                                 <div class="card-body">
                                     <h5 class="card-title">@product.Name</h5>

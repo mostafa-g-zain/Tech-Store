@@ -20,10 +20,7 @@
     <div class="row">
         <!-- Product Images -->
         <div class="col-md-6">
-            @if (!string.IsNullOrEmpty(Model.MainImage))
-            {
-                <img src="@Model.MainImage" class="img-fluid rounded mb-3" alt="@Model.Name">
-            }
+            <img src="@Model.MainImage" class="img-fluid rounded mb-3" alt="@Model.Name">
 
             @if (Model.Images.Any())
             {

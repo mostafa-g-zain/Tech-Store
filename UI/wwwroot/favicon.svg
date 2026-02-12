@@ -1,19 +1,55 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="monitor">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <defs>
-    <linearGradient id="a" x1="8.039" x2="23.975" y1="22.511" y2="6.575" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#ea40ad"></stop>
-      <stop offset="1" stop-color="#9641ed"></stop>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d6efd;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0a58ca;stop-opacity:1" />
     </linearGradient>
-    <linearGradient id="b" x1="3.104" x2="27.373" y1=".632" y2="29.554" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#fff" stop-opacity=".8"></stop>
-      <stop offset=".3" stop-color="#fff" stop-opacity=".2"></stop>
-      <stop offset=".5" stop-opacity=".1"></stop>
-      <stop offset=".8" stop-color="#c040ce" stop-opacity=".1"></stop>
-      <stop offset="1" stop-color="#c140cb" stop-opacity=".4"></stop>
+    <linearGradient id="screenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e3f2fd;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#bbdefb;stop-opacity:1" />
     </linearGradient>
   </defs>
-  <g>
-    <path fill="url(#a)" d="M25.986,10.413V17.12a4.412,4.412,0,0,1-4.412,4.412h-3.81a1,1,0,0,0-1,1V23.5a1,1,0,0,0,1,1h2.424a.75.75,0,1,1,0,1.5H11.839a.75.75,0,1,1,0-1.5h2.425a1,1,0,0,0,1-1v-.968a1,1,0,0,0-1-1H10.426A4.412,4.412,0,0,1,6.014,17.12V10.413A4.416,4.416,0,0,1,10.426,6H21.574A4.416,4.416,0,0,1,25.986,10.413Z"></path>
-    <path fill="url(#b)" d="M31,16A15,15,0,1,1,16,1,15.011,15.011,0,0,1,31,16Z"></path>
+  
+  <!-- Background Circle with Shadow -->
+  <circle cx="50" cy="50" r="48" fill="url(#bgGrad)" filter="url(#shadow)"/>
+  
+  <!-- Shadow Filter -->
+  <defs>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="0" dy="2" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Laptop Screen -->
+  <rect x="22" y="28" width="56" height="36" rx="2" fill="#ffffff" stroke="#f8f9fa" stroke-width="1"/>
+  
+  <!-- Screen Display -->
+  <rect x="25" y="31" width="50" height="30" rx="1" fill="url(#screenGrad)"/>
+  
+  <!-- Code Symbol on Screen -->
+  <g transform="translate(50, 46)">
+    <!-- Left Angle Bracket -->
+    <path d="M -8 -6 L -12 0 L -8 6" stroke="#0d6efd" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Slash -->
+    <path d="M -2 8 L 2 -8" stroke="#0d6efd" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <!-- Right Angle Bracket -->
+    <path d="M 8 -6 L 12 0 L 8 6" stroke="#0d6efd" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
+  
+  <!-- Laptop Base/Keyboard -->
+  <path d="M 18 64 L 22 64 L 24 66 L 76 66 L 78 64 L 82 64 L 85 72 L 15 72 Z" fill="#ffffff" stroke="#f8f9fa" stroke-width="1"/>
+  
+  <!-- Keyboard Detail -->
+  <rect x="40" y="67" width="20" height="2" rx="1" fill="#e3f2fd"/>
+  
+  <!-- Hinge -->
+  <rect x="22" y="63" width="56" height="1.5" fill="#dee2e6"/>
 </svg>
