@@ -15,28 +15,6 @@ Tech Store is an e-commerce web application built using ASP.NET Core MVC. It pro
 - **Bootstrap 5** for responsive design
 - **Font Awesome** for icons
 
-## Database Schema
-
-The application uses the following database structure:
-
-![ERD](https://github.com/user-attachments/assets/d4e8f4e5-8b4a-4f4e-9c5e-8b4a4f4e9c5e)
-
-### Main Entities
-- **AspNetUsers** - User authentication and authorization
-- **Products** - Product catalog with details
-- **Categories** - Product categorization (hierarchical)
-- **ProductImages** - Product image gallery
-- **Specifications** - Product technical specifications
-- **Reviews** - Customer product reviews
-- **Orders** - Customer orders
-- **OrderItems** - Individual items in orders
-- **ShoppingCart** - User shopping cart
-- **Wishlist** - User wishlist/favorites
-- **Addresses** - User shipping addresses
-- **Payments** - Payment transaction records
-
-## Getting Started
-
 ### Prerequisites
 - Visual Studio 2026
 - .NET SDK 10.x
