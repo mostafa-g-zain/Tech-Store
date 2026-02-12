@@ -1,0 +1,123 @@
+@model IEnumerable<BLL.DTOs.ProductDto>
+
+@{
+    ViewData["Title"] = "Products";
+    var categories = ViewBag.Categories as IEnumerable<BLL.DTOs.CategoryDto>;
+    var selectedCategoryId = ViewBag.SelectedCategoryId as int?;
+}
+
+<div class="container my-4">
+    <h1 class="mb-4">@ViewData["Title"]</h1>
+
+    <div class="row">
+        <!-- Sidebar - Categories -->
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Categories</h5>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a asp-action="Index" class="list-group-item list-group-item-action @(!selectedCategoryId.HasValue ? "active" : "")">
+                        All Products
+                    </a>
+                    @if (categories != null)
+                    {
+                        @foreach (var category in categories)
+                        {
+                            <a asp-action="Index" asp-route-categoryId="@category.Id"
+                               class="list-group-item list-group-item-action @(selectedCategoryId == category.Id ? "active" : "")">
+                                @if (!string.IsNullOrEmpty(category.Icon))
+                                {
+                                    <i class="@category.Icon me-2"></i>
+                                }
+                                @category.Name
+                            </a>
+                            @if (category.SubCategories.Any())
+                            {
+                                @foreach (var subCategory in category.SubCategories)
+                                {
+                                    <a asp-action="Index" asp-route-categoryId="@subCategory.Id"
+                                       class="list-group-item list-group-item-action ps-5 @(selectedCategoryId == subCategory.Id ? "active" : "")">
+                                        @subCategory.Name
+                                    </a>
+                                }
+                            }
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="col-md-9">
+            @if (!Model.Any())
+            {
+                <div class="alert alert-info">
+                    No products found in this category.
+                </div>
+            }
+            else
+            {
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    @foreach (var product in Model)
+                    {
+                        <div class="col">
+                            <div class="card h-100">
+                                @if (!string.IsNullOrEmpty(product.MainImage))
+                                {
+                                    <img src="@product.MainImage" class="card-img-top" alt="@product.Name" style="height: 200px; object-fit: cover;">
+                                }
+                                else
+                                {
+                                    <div class="bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                                        <span class="text-muted">No Image</span>
+                                    </div>
+                                }
+
+                                <!-- Badges -->
+                                <div class="position-absolute top-0 start-0 m-2">
+                                    @if (product.IsHot)
+                                    {
+                                        <span class="badge bg-danger">Hot</span>
+                                    }
+                                    @if (product.IsBestSeller)
+                                    {
+                                        <span class="badge bg-success">Best Seller</span>
+                                    }
+                                    @if (product.OldPrice > 0)
+                                    {
+                                        <span class="badge bg-warning text-dark">-@product.DiscountPercentage%</span>
+                                    }
+                                </div>
+
+                                <div class="card-body">
+                                    <h5 class="card-title">@product.Name</h5>
+                                    <p class="card-text text-muted small">@product.ShortDescription</p>
+
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <span class="h5 text-primary">${@product.Price.ToString("N2")}</span>
+                                            @if (product.OldPrice > 0)
+                                            {
+                                                <span class="text-muted text-decoration-line-through ms-2">${@product.OldPrice.ToString("N2")}</span>
+                                            }
+                                        </div>
+                                    </div>
+
+                                    @if (!string.IsNullOrEmpty(product.BrandName))
+                                    {
+                                        <p class="text-muted small mb-0 mt-2">Brand: @product.BrandName</p>
+                                    }
+                                </div>
+
+                                <div class="card-footer bg-transparent">
+                                    <a asp-action="Details" asp-route-id="@product.Slug" class="btn btn-primary w-100">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>

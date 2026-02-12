@@ -5,6 +5,7 @@
     <File Path=".gitignore" />
     <File Path="CONTRIBUTING.md" />
     <File Path="README.md" />
+    <File Path="workflow.md" />
   </Folder>
   <Project Path="BLL/BLL.csproj" Id="806a5355-3ebe-4697-963b-2642ecbbe83a">
     <BuildDependency Project="DAL/DAL.csproj" />

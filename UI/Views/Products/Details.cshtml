@@ -1,0 +1,164 @@
+@model BLL.DTOs.ProductDetailsDto
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="container my-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li class="breadcrumb-item"><a asp-controller="Products" asp-action="Index">Products</a></li>
+            @if (!string.IsNullOrEmpty(Model.CategoryName))
+            {
+                <li class="breadcrumb-item active" aria-current="page">@Model.CategoryName</li>
+            }
+            <li class="breadcrumb-item active" aria-current="page">@Model.Name</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <!-- Product Images -->
+        <div class="col-md-6">
+            @if (!string.IsNullOrEmpty(Model.MainImage))
+            {
+                <img src="@Model.MainImage" class="img-fluid rounded mb-3" alt="@Model.Name">
+            }
+
+            @if (Model.Images.Any())
+            {
+                <div class="row row-cols-4 g-2">
+                    @foreach (var image in Model.Images)
+                    {
+                        <div class="col">
+                            <img src="@image.ImageUrl" class="img-thumbnail" alt="@Model.Name">
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+
+        <!-- Product Info -->
+        <div class="col-md-6">
+            <h1 class="mb-3">@Model.Name</h1>
+
+            @if (!string.IsNullOrEmpty(Model.BrandName))
+            {
+                <p class="text-muted">Brand: <strong>@Model.BrandName</strong></p>
+            }
+
+            <!-- Rating -->
+            @if (Model.ReviewCount > 0)
+            {
+                <div class="mb-3">
+                    <span class="text-warning">
+                        @for (var i = 1; i <= 5; i++)
+                        {
+                            @if (i <= Model.AverageRating)
+                            {
+                                <i class="fas fa-star"></i>
+                            }
+                            else
+                            {
+                                <i class="far fa-star"></i>
+                            }
+                        }
+                    </span>
+                    <span class="ms-2">(@Model.ReviewCount reviews)</span>
+                </div>
+            }
+
+            <!-- Price -->
+            <div class="mb-3">
+                <span class="h2 text-primary">${@Model.Price.ToString("N2")}</span>
+                @if (Model.OldPrice > 0)
+                {
+                    <span class="h4 text-muted text-decoration-line-through ms-3">${@Model.OldPrice.ToString("N2")}</span>
+                    <span class="badge bg-danger ms-2">Save @Model.DiscountPercentage%</span>
+                }
+            </div>
+
+            <!-- Stock Status -->
+            <p class="mb-3">
+                @if (Model.StockQuantity > 0)
+                {
+                    <span class="badge bg-success">In Stock (@Model.StockQuantity available)</span>
+                }
+                else
+                {
+                    <span class="badge bg-danger">Out of Stock</span>
+                }
+            </p>
+
+            <!-- Description -->
+            @if (!string.IsNullOrEmpty(Model.Description))
+            {
+                <div class="mb-4">
+                    <h5>Description</h5>
+                    <p>@Model.Description</p>
+                </div>
+            }
+
+            <!-- Add to Cart Button (placeholder) -->
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary btn-lg" disabled>Add to Cart (Coming Soon)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Specifications -->
+    @if (Model.Specifications.Any())
+    {
+        <div class="row mt-5">
+            <div class="col-12">
+                <h3>Specifications</h3>
+                <table class="table table-striped">
+                    <tbody>
+                    @foreach (var spec in Model.Specifications)
+                    {
+                        <tr>
+                            <th style="width: 30%;">@spec.SpecKey</th>
+                            <td>@spec.SpecValue</td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+
+    <!-- Reviews -->
+    @if (Model.Reviews.Any())
+    {
+        <div class="row mt-5">
+            <div class="col-12">
+                <h3>Customer Reviews</h3>
+                @foreach (var review in Model.Reviews)
+                {
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h5 class="card-title mb-0">@review.Title</h5>
+                                <span class="text-warning">
+                                    @for (var i = 1; i <= 5; i++)
+                                    {
+                                        @if (i <= review.Rating)
+                                        {
+                                            <i class="fas fa-star"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="far fa-star"></i>
+                                        }
+                                    }
+                                </span>
+                            </div>
+                            <p class="card-text">@review.Comment</p>
+                            <small class="text-muted">By @review.UserName on @review.CreatedAt.ToString("MMMM dd, yyyy")</small>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>

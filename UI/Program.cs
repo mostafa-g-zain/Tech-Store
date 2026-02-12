@@ -1,3 +1,6 @@
+using BLL.Interfaces;
+using BLL.Services;
+
 using DAL.Contexts;
 using DAL.Entities;
 
@@ -21,6 +24,11 @@ namespace TechStore
             builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddRoles<IdentityRole<int>>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            // Register BLL Services
+            builder.Services.AddScoped<IProductService, ProductService>();
+            builder.Services.AddScoped<ICategoryService, CategoryService>();
+
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
