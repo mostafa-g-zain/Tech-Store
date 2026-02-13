@@ -6,6 +6,13 @@
     var selectedCategoryId = ViewBag.SelectedCategoryId as int?;
 }
 
+<style>
+    .list-group-item.active {
+        background-color: #17a2b8 !important;
+        border-color: #17a2b8 !important;
+    }
+</style>
+
 <div class="container my-4">
     <h1 class="mb-4">@ViewData["Title"]</h1>
 
