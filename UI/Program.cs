@@ -25,10 +25,10 @@ namespace TechStore
                 .AddRoles<IdentityRole<int>>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            // Register BLL Services
+            // Register Services
             builder.Services.AddScoped<IProductService, ProductService>();
             builder.Services.AddScoped<ICategoryService, CategoryService>();
-
+            builder.Services.AddScoped<ICartService, CartService>();
 
             builder.Services.AddControllersWithViews();
 

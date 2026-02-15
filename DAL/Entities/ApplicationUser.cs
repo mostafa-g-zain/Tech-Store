@@ -13,5 +13,6 @@ namespace DAL.Entities
 
         // Nav prop
         public ICollection<Review> Reviews { get; set; } = new HashSet<Review>();
+        public Cart? Cart { get; set; }
     }
 }

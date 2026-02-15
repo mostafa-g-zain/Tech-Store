@@ -46,7 +46,7 @@ public class CategoryService : ICategoryService
             .Include(c => c.SubCategories)
             .FirstOrDefaultAsync(c => c.Id == id);
 
-        return category.ToCategoryDto();
+        return category?.ToCategoryDto();
     }
 
     public async Task<CategoryDto?> GetCategoryBySlugAsync(string slug)
@@ -56,6 +56,6 @@ public class CategoryService : ICategoryService
             .Include(c => c.SubCategories)
             .FirstOrDefaultAsync(c => c.Slug == slug);
 
-        return category.ToCategoryDto();
+        return category?.ToCategoryDto();
     }
 }
