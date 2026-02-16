@@ -96,10 +96,32 @@
                 </div>
             }
 
-            <!-- Add to Cart Button (placeholder) -->
-            <div class="d-grid gap-2">
-                <button class="btn btn-primary btn-lg" disabled>Add to Cart (Coming Soon)</button>
-            </div>
+            <!-- Add to Cart -->
+            @if (Model.StockQuantity > 0)
+            {
+                <form id="add-to-cart-form" class="mb-3">
+                    <div class="row g-2 align-items-end mb-3">
+                        <div class="col-auto">
+                            <label for="quantity" class="form-label">Quantity</label>
+                            <input type="number" id="quantity" class="form-control" value="1" min="1" max="@Model.StockQuantity" style="width: 80px;">
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg" id="btn-add-to-cart" data-product-id="@Model.Id">
+                            <i class="fas fa-cart-plus me-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </form>
+                <div id="add-to-cart-message" class="mt-2" style="display:none;"></div>
+            }
+            else
+            {
+                <div class="d-grid gap-2">
+                    <button class="btn btn-secondary btn-lg" disabled>
+                        <i class="fas fa-ban me-2"></i>Out of Stock
+                    </button>
+                </div>
+            }
         </div>
     </div>
 
@@ -159,3 +181,7 @@
         </div>
     }
 </div>
+
+@section Scripts {
+    <script src="~/js/cart.js" asp-append-version="true"></script>
+}

@@ -71,9 +71,7 @@
                     <!-- Right Side Icons -->
                     <div class="d-flex align-items-center">
                         <partial name="_LoginPartial" />
-                        <a href="#" class="btn btn-outline-primary btn-sm ms-2">
-                            <i class="fas fa-shopping-cart me-1"></i>Cart <span class="badge bg-primary">0</span>
-                        </a>
+                        @await Html.PartialAsync("_CartBadge")
                     </div>
                 </div>
             </div>
