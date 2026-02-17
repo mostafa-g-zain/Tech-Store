@@ -23,22 +23,20 @@ public class ApplicationUserSeeder : IEntityTypeConfiguration<ApplicationUser>
                 FullName = "System Administrator",
                 SecurityStamp = "ADMIN-SECURITY-STAMP-STATIC-001",
                 ConcurrencyStamp = "ADMIN-CONCURRENCY-STAMP-STATIC-001",
-                PasswordHash = "REPLACE_WITH_STATIC_HASH_FOR_Admin@123",
                 CreatedAt = seedDate,
                 UpdatedAt = seedDate
             },
             new ApplicationUser
             {
                 Id = 2,
-                UserName = "customer@example.com",
-                NormalizedUserName = "CUSTOMER@EXAMPLE.COM",
-                Email = "customer@example.com",
-                NormalizedEmail = "CUSTOMER@EXAMPLE.COM",
+                UserName = "customer@techstore.com",
+                NormalizedUserName = "CUSTOMER@TECHSTORE.COM",
+                Email = "customer@techstore.com",
+                NormalizedEmail = "CUSTOMER@TECHSTORE.COM",
                 EmailConfirmed = true,
                 FullName = "Mostafa Zain",
                 SecurityStamp = "CUSTOMER-SECURITY-STAMP-STATIC-002",
                 ConcurrencyStamp = "CUSTOMER-CONCURRENCY-STAMP-STATIC-002",
-                PasswordHash = "REPLACE_WITH_STATIC_HASH_FOR_Customer@123",
                 CreatedAt = seedDate,
                 UpdatedAt = seedDate
             }

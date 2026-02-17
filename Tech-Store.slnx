@@ -4,7 +4,7 @@
     <File Path=".gitattributes" />
     <File Path=".gitignore" />
     <File Path="CONTRIBUTING.md" />
-    <File Path="current_feature_plan.md" />
+    <File Path="features_plan.md" />
     <File Path="README.md" />
     <File Path="structure.md" />
     <File Path="workflow.md" />

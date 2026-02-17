@@ -7,11 +7,13 @@ using DAL.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
+using TechStore.Data;
+
 namespace TechStore
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +36,21 @@ namespace TechStore
 
             var app = builder.Build();
 
+            // Seed roles and admin user (idempotent, all environments)
+            using (var scope = app.Services.CreateScope())
+            {
+                try
+                {
+                    await DbInitializer.SeedRolesAndAdminAsync(scope.ServiceProvider);
+                }
+                catch (Exception ex)
+                {
+                    var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred while seeding the database.");
+                    throw;
+                }
+            }
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
@@ -49,6 +66,7 @@ namespace TechStore
             app.UseHttpsRedirection();
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapStaticAssets();

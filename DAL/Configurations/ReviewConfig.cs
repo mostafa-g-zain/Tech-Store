@@ -38,8 +38,9 @@ namespace DAL.Configurations
             builder.HasOne(r => r.User)
                 .WithMany(r => r.Reviews)
                 .HasForeignKey(r => r.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
-
+                .OnDelete(DeleteBehavior.SetNull);
+            //restrict: will prevent deleting any user has reviews... LOL, that doesn't make sense.
+            //SetNull: keeps the reviews, on deleting the user account.
         }
     }
 }

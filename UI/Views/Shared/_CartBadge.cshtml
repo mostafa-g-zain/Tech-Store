@@ -4,16 +4,13 @@
 @inject SignInManager<DAL.Entities.ApplicationUser> SignInManager
 @inject ICartService CartService
 
-@{
-    var count = 0;
-    if (SignInManager.IsSignedIn(User))
-    {
-        var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
-        count = await CartService.GetCartItemCountAsync(userId);
-    }
-}
+@if (SignInManager.IsSignedIn(User) && !User.IsInRole("Admin"))
+{
+    var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+    var count = await CartService.GetCartItemCountAsync(userId);
 
-<a asp-controller="Cart" asp-action="Index" class="btn btn-outline-primary btn-sm ms-2 position-relative" id="cart-badge-link">
-    <i class="fas fa-shopping-cart me-1"></i>Cart
-    <span class="badge bg-primary" id="cart-badge-count">@count</span>
-</a>
+    <a asp-controller="Cart" asp-action="Index" class="btn btn-outline-primary btn-sm ms-2 position-relative" id="cart-badge-link">
+        <i class="fas fa-shopping-cart me-1"></i>Cart
+        <span class="badge bg-primary" id="cart-badge-count">@count</span>
+    </a>
+}

@@ -1,5 +1,6 @@
 using System.Security.Claims;
 
+using BLL.Common;
 using BLL.DTOs;
 using BLL.Interfaces;
 
@@ -8,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace UI.Controllers;
 
-[Authorize]
+[Authorize(Roles = AppRoles.Customer)]
 public class CartController : Controller
 {
     private readonly ICartService _cartService;

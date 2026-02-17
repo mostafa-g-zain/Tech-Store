@@ -15,7 +15,7 @@ namespace DAL.Entities
 
         //FK
         public int ProductId { get; set; }
-        public int UserId { get; set; }
+        public int? UserId { get; set; }
 
         //Nav prop
         public Product Product { get; set; }
